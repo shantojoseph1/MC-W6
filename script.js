@@ -1,5 +1,5 @@
 document.getElementById('copyIP').addEventListener('click', function() {
-    const serverIP = 'razer.online';
+    const serverIP = 'razermc.online';
     navigator.clipboard.writeText(serverIP)
         .then(() => {
             this.classList.add('copied');
@@ -10,7 +10,7 @@ document.getElementById('copyIP').addEventListener('click', function() {
         });
 });
 document.getElementById('copyIP2').addEventListener('click', function() {
-    const serverIP = 'mc.razer.online';
+    const serverIP = 'mc.razermc.online';
     navigator.clipboard.writeText(serverIP)
         .then(() => {
             this.classList.add('copied');
@@ -44,7 +44,7 @@ downloadOptions.addEventListener('click', function(event) {
 
 // Add this to your existing script
 document.getElementById('copyIP').addEventListener('click', function() {
-    const serverIP = 'razer.online';
+    const serverIP = 'razermc.online';
     
     // Create popup element
     const popup = document.createElement('div');
@@ -85,7 +85,7 @@ document.getElementById('copyIP').addEventListener('click', function() {
 
 // Add this to your existing script
 document.getElementById('copyIP2').addEventListener('click', function() {
-    const serverIP = 'mc.razer.online';
+    const serverIP = 'mc.razermc.online';
     
     // Create popup element
     const popup = document.createElement('div');
