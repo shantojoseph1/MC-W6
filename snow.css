@@ -1,0 +1,47 @@
+:root {
+--background-dark: rgba(0, 0, 0, 0.75)
+}
+  .snowflake {
+      user-select: none;
+      pointer-events: none;
+      z-index: 9999;
+      color: #a9cce3;
+      font-weight: bold;
+      font-family: "Arial", sans-serif;
+      white-space: nowrap;
+      
+    }
+
+    /* loading */
+    #loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+  }
+  
+  .loading-animation {
+      color: #00ff00; /* Green Minecraft theme */
+      font-size: 2rem;
+      font-family: 'Minecraft', sans-serif;
+      text-transform: uppercase;
+      animation: blink 1s infinite;
+  }
+  
+  @keyframes blink {
+      0%, 100% {
+          opacity: 1;
+      }
+      50% {
+          opacity: 0.5;
+      }
+  }
+  
+
+   

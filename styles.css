@@ -1,0 +1,464 @@
+:root {
+    --minecraft-green: #44D62C;
+    --background-dark: rgba(0, 0, 0, 0.75);
+    --accent-dark: rgba(0, 0, 0, 0.85);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: white;
+    line-height: 1.6;
+}
+
+.hero {
+    min-height: 100vh;
+    background: url('https://cdn.modrinth.com/data/BOwymOaY/images/2ec80b7a35f0ae7351450767975e4d5026856d3a.png') center/cover fixed;
+    /* background: url('1.jpg') center/cover fixed; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 2rem;
+}
+
+.hero::before {
+    /* content: ''; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, #000000b3, rgba(0, 0, 0, 0.4));
+}
+
+.hero-content {
+    color: #eaffe7;
+    position: relative;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.server-status {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--background-dark);
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 500;
+}
+
+.status-item svg {
+    color: var(--minecraft-green);
+}
+
+.server-ip {
+    margin-bottom: 2rem;
+}
+.server-ip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem; /* Adds a 0.5rem gap between the IP addresses */
+}
+
+.copy-button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--background-dark);
+    border: none;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+}
+
+.copy-button span {
+    font-family: monospace;
+}
+
+.download-section {
+    position: relative;
+    display: inline-block;
+}
+
+.download-button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--minecraft-green);
+    border: none;
+    color: black;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.download-button:hover {
+    background: #3bc125;
+    transform: translateY(-2px);
+}
+
+.download-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-dark);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    width: max-content;
+    min-width: 100%;
+}
+
+.download-options.active {
+    display: block;
+}
+
+.download-option {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease;
+    text-align: left;
+}
+
+.download-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.download-option.warning {
+    color: #ef4444;
+}
+
+.download-option .description {
+    font-size: 0.875rem;
+    color: #9ca3af;
+}
+
+
+.discord-button {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #5865F2;
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.discord-button:hover {
+    background: #4752C4;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .server-status {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .status-item {
+        justify-content: center;
+    }
+
+    .copy-button {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+    }
+
+    .download-button {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+    }
+}
+
+.discord-dropdown {
+    display: none;
+    position: fixed;
+    top: calc(1.5rem + 45px);
+    left: 1rem;
+    background: var(--accent-dark);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 150px;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.discord-dropdown.active {
+    display: block;
+}
+
+.discord-dropdown-item {
+    display: block;
+    padding: 0.2rem 0.1rem;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease;
+}
+
+.discord-dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.copy1-button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--background-dark);
+    border: none;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.copy1-button:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);    
+}
+
+.copy1-button span {
+    font-family: monospace;
+}
+/* change */
+.change-button {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #3bc125;
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.change-button:hover {
+    background: #008000;
+    transform: translateY(-2px);
+}
+
+/* status */
+/* Add to existing styles.css */
+.admin-section {
+    position: fixed;
+    top: 5rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    background: #00000080;;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    color: white; /* Ensures the text color inside this section is white */
+}
+
+.admin-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.admin-link a {
+    text-decoration: none; /* Removes underline from the link */
+    color: white; /* Ensures the link text is white */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Adds spacing between icon and text */
+}
+
+.admin-link i {
+    font-size: 1.5rem;
+    color: white; /* Ensures the icon color is white */
+}
+
+.admin-section:hover {
+    background: rgba(0, 0, 0, 0.7); /* Darkens the background on hover */
+    transform: translateY(-2px); /* Adds a subtle movement effect */
+}
+
+/* Footer Styles */
+.scroll-down-icon {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    z-index: 10;
+}
+.scroll-down-icon:hover {
+    color: var(--minecraft-green);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-20px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+}
+
+.footer {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 4rem 2rem;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: relative;
+}
+
+.footer.visible {
+    display: block;
+    opacity: 1;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-section h3 {
+    border-bottom: 2px solid var(--minecraft-green);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--minecraft-green);
+}
+
+.map-list, .mod-list {
+    list-style-type: none;
+}
+
+.map-list li, .mod-list li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.map-list li::before, .mod-list li::before {
+    content: '•';
+    color: var(--minecraft-green);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Hide scrollbar */
+body {
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+body::-webkit-scrollbar {
+    display: none; /* WebKit */
+}
+
+.back-to-top {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.back-to-top:hover {
+    color: var(--minecraft-green);
+}
