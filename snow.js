@@ -115,49 +115,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // error
-
-// Redirect to 404 page on certain errors
-window.addEventListener('error', (event) => {
-  console.error('Error captured:', event);
-  window.location.href = '404.html';
-});
 
 
 
-// Network error fallback
-setTimeout(() => {
-  if (!navigator.onLine) {
-      console.warn('Network issue detected, redirecting to 404.html');
-      window.location.href = '404.html';
-  }
-}, 5000);
-
-document.addEventListener('DOMContentLoaded', () => {
-  const adminLink = document.getElementById('adminLink');
-  const loadingOverlay = document.getElementById('loading');
-
-  adminLink.addEventListener('click', async (event) => {
-      event.preventDefault(); // Prevent the default behavior of the link
-      loadingOverlay.style.display = 'flex'; // Show loading animation
-
-      try {
-          // Perform a HEAD request to check if the page is reachable
-          const response = await fetch(adminLink.href, { method: 'HEAD', mode: 'no-cors' });
-          if (response.ok || response.status === 0) {
-              // If reachable, redirect to the admin page
-              window.location.href = adminLink.href;
-          } else {
-              throw new Error('Page not reachable');
-          }
-      } catch (error) {
-          console.error('Admin link failed:', error);
-          // Redirect to the 404 page
-          window.location.href = '404.html';
-      } finally {
-          loadingOverlay.style.display = 'none'; // Hide loading animation
-      }
-  });
-});
-
-// loading animation
