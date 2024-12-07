@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener('DOMContentLoaded', function() {
     // Create audio element
     const backgroundMusic = document.createElement('audio');
-    backgroundMusic.src = '1.MP3'; // Replace with actual music file path
+    backgroundMusic.src = '1.mp3'; // Replace with actual music file path
     backgroundMusic.loop = true;
     backgroundMusic.volume = 0.1; // Set a reasonable volume
     backgroundMusic.muted = true; // Start muted
